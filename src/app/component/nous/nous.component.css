@@ -1,0 +1,26 @@
+@keyframes example {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+
+  100% {
+    left: 0px;
+    top: 70px;
+
+  }
+}
+
+.ani{
+  animation-name: example;
+  animation-duration: 0.5s;
+}
+
+.trans {
+  background: linear-gradient(to bottom right, #000000 0%, rgba(255,255,255,0) 100%);
+
+}
+
+.trans1 {
+  background: linear-gradient(to bottom left, #000000 0%, rgba(255,255,255,0) 100%);
+}

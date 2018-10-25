@@ -1,0 +1,21 @@
+
+<header>
+
+  <h2>EXERCICE</h2>
+</header>
+
+<article class="mb-3 ">
+  <h3>exercice 1 </h3>
+  <div class="input-group mb-3">
+  <input type="text" placeholder="envoyer une tache par hiboux" class="form-control" [(ngModel)]="message" (keyup.enter)="ajoutlist(message)" />
+  <div class="input-group-append">
+    <button class="btn-outline-primary" (click)="ajoutlist(message)"  >ajout tache</button>
+  </div>
+  </div>
+
+  <ul class="list-unstyled">
+    <li *ngFor="let message of liste; index as i ">{{message}}<button class="btn-outline-primary" (click)="suprlist(i)">supprimer</button>
+    </li>
+
+  </ul>
+</article>

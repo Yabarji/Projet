@@ -1,0 +1,29 @@
+<header>
+  <h2 class="text-center bg-dark">Promise & Observer</h2>
+</header>
+
+<div class="row">
+
+<div class="col">
+  <h3 class="text-center bg-dark">Promise</h3>
+  <button class="btn btn-outline-primary" (click)="getAsyncNumber()">
+    Synchroniser
+  </button>
+  <p class="my-2 text-primary">{{wait}}</p>
+  <div class="alert alert-warning" *ngIf="error">{{error}}</div>
+  <ul class="list-unstyled">
+    <li *ngFor="let number of numbers">{{number}}</li>
+  </ul>
+</div>
+
+  <div class="col">
+    <h3 class="text-center bg-dark">Observer</h3>
+
+    <button class="btn btn-outline-primary" (click)="getMultiNumber()">Sychronisation</button>
+    <p class="my-2 text-primary">{{message}}</p>
+    <ul class="list-unstyled">
+      <li *ngFor="let number of obsNumbers">{{number}}</li>
+    </ul>
+  </div>
+
+</div>

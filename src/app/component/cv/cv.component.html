@@ -1,0 +1,80 @@
+
+
+<h1>cv?</h1>
+
+<section *ngIf="cv.information">
+
+
+  <div class="col">
+    <ul class="col" *ngFor="let info of cv.information">
+      <div>{{info.surname}} {{info.name}}</div>
+      <li>né le : {{info.birhday}}</li>
+      <li>adresse :  {{info.adresse}}</li>
+      <li>tel : {{info.phone}}</li>
+      <li>email : {{info.email}}</li>
+
+    </ul>
+  </div>
+</section>
+
+
+
+
+
+<section *ngIf="cv.competences">
+  <h2 class="text-center">Competences</h2>
+  <hr />
+<div class="row">
+  <ul class="col-3" *ngFor="let competence of cv.competences">
+
+      <div class="col">
+      <div class="col text-center">{{competence.name }} </div>
+        <div *ngFor="let tag of competence.tags">
+      <div class="text-center">{{tag}}</div>
+        </div>
+      </div>
+
+  </ul>
+</div>
+</section>
+
+<section *ngIf="cv.formations.length">
+  <h2 class="text-center">Formations</h2>
+  <hr />
+
+  <ul class="col" *ngFor="let formation of cv.formations">
+    <div class="row">
+      <div class="col-1 text-center">{{formation.dateDebut }} </div>
+      <div class="col-1 text-center">{{formation.dateFin}}</div>
+      <div class="col-1 text-center">{{formation.titre}}</div>
+    </div>
+    <div class="col-12">{{formation.description}}</div>
+  </ul>
+</section>
+
+
+<section *ngIf="cv.experiences.length">
+  <h2 class="text-center">Experiences</h2>
+  <hr />
+
+  <ul class="col" *ngFor="let experience of cv.experiences">
+    <div class="row">
+      <div class="col-1 text-center">{{experience.dateDebut }} </div>
+      <div class="col-1 text-center">{{experience.dateFin}}</div>
+      <div class="col-1 text-center">{{experience.titre}}</div>
+    </div>
+    <div class="col-12">{{experience.description}}</div>
+  </ul>
+</section>
+
+
+<section *ngIf="cv.interet">
+  <h2 class="text-center">interet</h2>
+  <hr />
+  <div class="align-center">
+
+        <div *ngFor="let tag of cv.interet">
+          <div class="text-center">{{tag.name}}</div>
+        </div>
+      </div>
+</section>

@@ -1,0 +1,97 @@
+<header>
+  <h2>Directive</h2>
+</header>
+
+
+<ul>
+
+  <li>Les directives Structurelles : elles ont pour but de du DOM.</li>
+  <li>Les directives attributs : Elles ont pour but de modifier</li>
+
+</ul>
+
+<h3 class="text-primary">NGIF</h3>
+
+<div class="my-3">
+  <button class="btn btn-outline-primary" (click)="isVisible = !isVisible">
+    {{ isVisible? 'hide': 'Show'}}
+  </button>
+</div>
+
+
+ <h2 *ngIf="isVisible" class="text-center">LUMOS MAXIMA !!!</h2>
+
+<h2 *ngIf="isVisible; else elseBlock " class="text-center">
+  LUMOS MAXIMA !!!!
+</h2>
+
+<ng-template #elseBlock>
+  <p> lumos ? </p>
+</ng-template>
+
+<h3 class="text-primary">NGFOR</h3>
+
+<ul>
+
+  <li *ngFor="let letter of ['a', 'b', 'c','d','e']; index as index; even as paire; odd as impaire; first as f; last as l">
+   {{index}} : {{letter}} (paire : {{paire}} / impaire : {{impaire}}) First -> {{f}} - Last -> {{l}}
+  </li>
+</ul>
+
+
+<h3 class="text-primary">ngSWITCH </h3>
+
+<div class="btn-group btn-group-sm my-2">
+  <button class="btn btn-outline-dark" (click)=" mode = 'vertical' ">Vertical</button>
+  <button class="btn btn-outline-dark" (click)=" mode = 'horizontal' ">Horizontal</button>
+
+</div>
+
+<div [ngSwitch]=" mode ">
+
+  <ul *ngSwitchCase=" 'vertical' " class="list-unstyled">
+    <li>Element 1</li>
+    <li>Element 2</li>
+    <li>Element 3</li>
+    <li>Element 4</li>
+    <li>Element 5</li>
+  </ul>
+
+  <ul *ngSwitchCase=" 'horizontal' " class="list-unstyled">
+    <li class="list-inline-item">Element 1</li>
+    <li class="list-inline-item">Element 2</li>
+    <li class="list-inline-item">Element 3</li>
+    <li class="list-inline-item">Element 4</li>
+    <li class="list-inline-item">Element 5</li>
+  </ul>
+
+  <p *ngSwitchDefault class="text-black-50">
+    Aucune donnee enregistree
+  </p>
+</div>
+
+<hr />
+
+<button class="my-3 btn btn-outline-primary" (click)=" hasClass = !hasClass">
+  Toggle Class
+</button>
+
+<p [ngClass]=" { 'text-success': hasClass, 'text-danger': !hasClass } "> Hermionne !!!! </p>
+
+<h3 class="text-primary">ngStyle</h3>
+
+<div class="btn btn-group-sm my-2">
+
+  <button class="btn btn-outline-dark" (click)=" progress= '0%' ">0%</button>
+  <button class="btn btn-outline-dark" (click)=" progress= '25%' ">25%</button>
+  <button class="btn btn-outline-dark" (click)=" progress= '50%' ">50%</button>
+  <button class="btn btn-outline-dark" (click)=" progress= '75%' ">75%</button>
+  <button class="btn btn-outline-dark" (click)=" progress= '100%' ">100%</button>
+
+
+</div>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-animated progress-bar-striped" role = "progressbar"
+        [style.width]="progress" [attr.aria-valuenow]="progress"></div>
+</div>

@@ -1,0 +1,46 @@
+<header>
+  <h2 class="text-center bg-dark">HTTP
+    <small>xhr</small>
+  </h2>
+</header>
+
+<button class="btn btn-outline-primary my-2" (click)="loadUser()">Recuperer les utilisateur</button>
+
+<table class="table">
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>name</td>
+    <td>email</td>
+    <td>phone</td>
+    <td>adress</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td> {{ user.id }}</td>
+    <td> {{ user.name }}</td>
+    <td> {{ user.email }}</td>
+    <td> {{ user.phone }}</td>
+    <td> {{ user.getAddress() }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<h3>RESTFUL</h3>
+
+<dl class="row">
+  <dt class="col-2">GET</dt><dd class="col-9">Recuperer</dd>
+  <dt class="col-2">POST</dt><dd class="col-9">Ajouter</dd>
+  <dt class="col-2">PUT</dt><dd class="col-9">Remplacer</dd>
+  <dt class="col-2">PATCH</dt><dd class="col-9">Modifier</dd>
+  <dt class="col-2">DELETE</dt><dd class="col-9">Supprimer</dd>
+</dl>
+<dl class="row">
+  <dt class="col-2">OPTION</dt><dd class="col-9"> (CORS) authentification de la requete 204</dd>
+  <dt class="col-2">HEAD</dt><dd class="col-9"> Existe </dd>
+</dl>
+<dl class="row">
+  <dt class="col-2">CONNECT</dt><dd class="col-9">Tunnel de communication ( socket) </dd>
+  <dt class="col-2">TRACE</dt><dd class="col-9">Message de test (ping ?) </dd>
+</dl>

@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+.font {
+
+  font-family: 'East Sea Dokdo', cursive;
+
+}
+
+.fnav {
+
+  font-size: 35px;
+
+}
+
+.bform {
+
+  border-color: black;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.fform {
+
+  font-size: 30px;
+
+}
+
+.ftitle {
+
+  font-size: 200px;
+}
+
+.test {
+  width: 800px;
+  height: 800px;
+
+
+  border: none;
+  background: center ;
+  background-repeat: no-repeat;
+  background-size: 700px;
+}
+
+
+.croi {
+  height: 100px;
+  width: 100px;
+
+}
+
+.bg-noir {
+  background-color: black;
+}
