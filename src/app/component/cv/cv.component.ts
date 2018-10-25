@@ -87,6 +87,14 @@ export class CVComponent implements OnInit {
 
       }
     ];
+
+
+
+    this.cv.name = [
+      {
+        'name': 'DEVELOPPEUR JAVA EE'
+      }
+    ];
     console.log(this.cv);
   }
 

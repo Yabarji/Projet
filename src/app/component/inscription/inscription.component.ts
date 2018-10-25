@@ -13,9 +13,6 @@ import {Utilisateur} from '../../class/utilisateur';
 })
 export class InscriptionComponent implements OnInit {
 
-  // inscription: [];
-
-
   email: FormControl;
   password: FormControl;
   confirm: FormControl;

@@ -82,6 +82,6 @@ import { CVComponent } from './component/cv/cv.component';
   providers: [
     { provide: 'SecureRouteGuard', useValue: () => true },
     { provide: LOCALE_ID, useValue: 'fr'}],
-  bootstrap: [RouteComponent, InscriptionComponent ]
+  bootstrap: [RouteComponent, InscriptionComponent , ConnectionComponent ]
 })
 export class AppModule { }

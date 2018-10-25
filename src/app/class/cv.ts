@@ -8,17 +8,25 @@ export class CV {
   private _competences: any[]; // ok
   private _interet: any[];
   private _information: any[];
+  private _name: any[];
 
-
-  constructor(formation?: any[], experience?: any[], competences?: any[], interet?: any[], information?: any[]) {
+  constructor(formation?: any[], experience?: any[], competences?: any[], interet?: any[], information?: any[], name?: any[]) {
     this._formations = formation;
     this._experiences = experience;
-
+    this._name = name;
     this._competences = competences;
     this._interet = interet;
     this._information = information;
   }
 
+
+  get name(): any[] {
+    return this._name;
+  }
+
+  set name(value: any[]) {
+    this._name = value;
+  }
 
   get formations(): any[] {
     return this._formations;

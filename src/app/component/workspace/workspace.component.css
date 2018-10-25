@@ -2,10 +2,21 @@
   position: fixed;
   right: 87%;
   top: 25%;
-  width: 15em;
-  margin-top: -2.6em;
+  width: 18em;
+  margin-top: -3.2em;
   height: 100%;
 
+
+}
+
+
+#photo {
+  position: fixed;
+  right: 10px;
+  top: 15%;
+  width: 200px;
+  margin-top: 0em;
+  height: 250px;
 }
 
 #cv
@@ -16,3 +27,13 @@ height: 100%;
 }
 
 
+.right_align
+{
+  text-align: right;
+  margin : 2px;
+}
+
+.minH
+{
+  min-width: 200px;
+}

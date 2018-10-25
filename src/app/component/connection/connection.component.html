@@ -1,7 +1,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="inscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" >
+<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" >
   <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
     <div class="modal-content bg-transparent test" style="background-image: url(assets/image/modal1.png)">
 
@@ -19,7 +19,7 @@
 
               <div class="rounded ">
                 <label class="col-form-label font fform ">Email:</label>
-                <input type="text" class="form-control" placeholder="tu est un Email harry"
+                <input type="text" class="form-control" placeholder="azerty@hotmail.fr"
                        [ngClass]="{'is-invalid': email.invalid && email.touched , 'is-valid': email.valid}"
                        formControlName="email"/>
                 <p class="invalid-feedback" *ngIf="controlEmail()">{{controlEmail()}}</p>
@@ -38,7 +38,7 @@
             <div class="col-12  ">
               <div class="rounded ">
                 <label class="col-form-label font fform">MDP :</label>
-                <input type="password" class="form-control" placeholder="ta baguette est grosse hermionne !"
+                <input type="password" class="form-control" placeholder="mot de passe"
                        [ngClass]="{'is-invalid': password.invalid && password.touched , 'is-valid': password.valid}"
                        formControlName="password"/>
                 <p class="invalid-feedback" *ngIf="controlmdp()">{{controlmdp()}}</p>
@@ -57,7 +57,7 @@
           <div class="form-group row ">
 
             <div class="col-8">
-              <input type="submit" name="envoyer" class="btn btn-outline-primary bg-noir rounded" value="s'inscrire" [disabled]=""/>
+              <input type="submit" name="envoyer" class="btn btn-outline-primary bg-noir rounded" value="Connexion" [disabled]=""/>
             </div>
 
             <a ><img class="croi" src="assets/image/croix1.png"  data-dismiss ="modal"></a>
