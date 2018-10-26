@@ -1,40 +1,23 @@
 
+<div class="row">
 
-
-<section class=" " style="background-image: url(assets/image/dark.jpg)" >
-
-
-
-
-
-  <ul id=menu class="col right_align">
-    <li><button class="btn btn-outline-dark text-white minH bg-noir rounded">Information</button>
-    <li><button class="btn btn-outline-dark text-white minH bg-noir rounded">Competences</button>
-
-
-
-    <li><button class="btn btn-outline-dark text-white minH bg-noir rounded" data-toggle="modal" data-target="#formation">Formation</button>
-
-
-
-    <li><button class="btn btn-outline-dark text-white minH bg-noir rounded">Experience</button>
-    <li><button class="btn btn-outline-dark text-white minH right_align bg-noir rounded">Centre d'interet</button>
-
-
-
-  </ul>
-
-  <div id="photo" class="bg-noir text-center text-white">PHOTO</div>
-  <div id="listecv" class="bg-noir text-center text-white">
-<app-flow></app-flow>
+  <div class="col-3">
+    <ul class="list-unstyled">
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded">Information</button>
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" data-toggle="modal" data-target="#competences">Competences</button>
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" data-toggle="modal" data-target="#formation">Formation</button>
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" >Experience</button>
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded">Centre d'interet</button>
+    </ul>
   </div>
-<div class="pt-md-5"></div>
-  <div class="bg-white container  " id="cv">
-
+  <div class="col-lg-6">
     <app-cv></app-cv>
     <app-modal></app-modal>
-    <div class="pb-md-3"></div>
+    <app-modal-competences></app-modal-competences>
   </div>
+  <div class="col-lg-3">
+    <div class="text-center text-white">PHOTO</div>
+  </div>
+</div>
 
-  <div class="pb-md-5"></div>
-</section >
+
