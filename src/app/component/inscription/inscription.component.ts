@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 import {CustomValidator} from '../../validator/custom-validator';
-import {Product} from '../../class/product';
+
 import {Utilisateur} from '../../class/utilisateur';
 
 
