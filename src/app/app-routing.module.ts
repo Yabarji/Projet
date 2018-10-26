@@ -22,6 +22,7 @@ import {WorkspaceComponent} from './component/workspace/workspace.component';
 import {ChoixComponent} from './component/choix/choix.component';
 import {NousComponent} from './component/nous/nous.component';
 import {InscriptionComponent} from './component/inscription/inscription.component';
+import {FlowComponent} from './component/flow/flow.component';
 
 const route: Routes = [
 
@@ -45,6 +46,7 @@ const route: Routes = [
   { path: 'choix', component: ChoixComponent},
   { path: 'nous', component: NousComponent},
   { path: 'inscription', component: InscriptionComponent},
+  { path: 'flow', component: FlowComponent},
 
   {
     path: 'para/:name',

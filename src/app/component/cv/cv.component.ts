@@ -99,4 +99,10 @@ export class CVComponent implements OnInit {
   }
 
 
+  public deletename(name: string) {
+
+  delete this.cv.name[name];
+  }
+
+
 }

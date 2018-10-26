@@ -40,6 +40,7 @@ import { NousComponent } from './component/nous/nous.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { ConnectionComponent } from './component/connection/connection.component';
 import { CVComponent } from './component/cv/cv.component';
+import { FlowComponent } from './component/flow/flow.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { CVComponent } from './component/cv/cv.component';
     NousComponent,
     InscriptionComponent,
     ConnectionComponent,
-    CVComponent
+    CVComponent,
+    FlowComponent
   ],
   imports: [
     BrowserModule,
