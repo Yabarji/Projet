@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 import {CustomValidator} from '../../validator/custom-validator';
+import {AuthenticationService} from '../../service/authentication/authentication.service';
+import {User} from '../../class/user';
+
+declare var jquery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-connection',
   templateUrl: './connection.component.html',
@@ -11,12 +17,15 @@ export class ConnectionComponent implements OnInit {
   email: FormControl;
   password: FormControl;
 
-
   form: FormGroup;
 
   passwordMinLength = 8;
 
-  constructor(private fb: FormBuilder) { }
+  user: User;
+  error = null;
+  message = null;
+
+  constructor(private fb: FormBuilder, private authification: AuthenticationService) { }
 
   ngOnInit() {
 
@@ -29,14 +38,21 @@ export class ConnectionComponent implements OnInit {
     });
 
   }
+
   public onSubmitData() {
 
     if (this.form.valid) {
+      this.user = new User(this.form.value);
+      this.message = 'Authentification en cours';
 
-      console.log(this.email.value);
-      console.log(this.password.value);
-
-      console.log(this.form.value);
+      this.authification.login(this.user).subscribe( (u: User) => {
+        // console.log(u);
+        this.message = null;
+        $('#connexion').modal('hide');
+      }, () => {
+        this.message = null;
+        this.error = 'Erreur d\'identification';
+      });
     }
   }
 
