@@ -1,36 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {log} from "util";
-import {parse} from "ts-node";
 
 @Component({
-  selector: 'app-modal-competences',
-  templateUrl: './modal-competences.component.html',
-  styleUrls: ['./modal-competences.component.css']
+  selector: 'app-modal-interet',
+  templateUrl: './modal-interet.component.html',
+  styleUrls: ['./modal-interet.component.css']
 })
-export class ModalCompetencesComponent implements OnInit {
+export class ModalInteretComponent implements OnInit {
 
   tags: Array<string> = [];
 
   tagBool: boolean;
 
   name: FormControl;
-  description: FormControl;
+
   form: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-
     this.name = new FormControl(null,[Validators.required]);
-    this.description = new FormControl(null,[Validators.required]);
-
 
     this.form = this.fb.group({
       name: this.name,
-      description: this.description
-    });
 
+    });
   }
 
 
@@ -46,26 +40,14 @@ export class ModalCompetencesComponent implements OnInit {
   public controlName(): boolean | string {
     if (this.name.touched) {
       if (this.name.hasError('required')) {
-        return 'Nom required';
+        return 'Interet required';
       }
     }
     return false;
   }
-
-
-  public controlDescription(): boolean | string {
-    if (this.description.touched) {
-      if (this.description.hasError('required')) {
-        return 'Description required';
-      }
-    }
-    return false;
-  }
-
-
   public addTag(): void {
-    this.tags.push( this.description.value );
-    this.description.setValue(null);
+    this.tags.push( this.name.value );
+    this.name.setValue(null);
     this.tagBool= true;
     console.log(this.tagBool);
   }
@@ -88,5 +70,4 @@ export class ModalCompetencesComponent implements OnInit {
     this.tagBool= false;
     return true;
   }
-
 }

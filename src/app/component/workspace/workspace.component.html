@@ -3,17 +3,20 @@
 
   <div class="col-3">
     <ul class="list-unstyled">
-      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded">Information</button>
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" data-toggle="modal" data-target="#informations">Information</button>
       <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" data-toggle="modal" data-target="#competences">Competences</button>
       <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" data-toggle="modal" data-target="#formation">Formation</button>
-      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" >Experience</button>
-      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded">Centre d'interet</button>
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" data-toggle="modal" data-target="#experiences">Experience</button>
+      <li><button class="btn btn-outline-dark btn-block text-white bg-noir rounded" data-toggle="modal" data-target="#interets">Centre d'interet</button>
     </ul>
   </div>
   <div class="col-lg-6">
     <app-cv></app-cv>
     <app-modal></app-modal>
     <app-modal-competences></app-modal-competences>
+    <app-modal-experiences></app-modal-experiences>
+    <app-modal-interet></app-modal-interet>
+    <app-modal-information></app-modal-information>
   </div>
   <div class="col-lg-3">
     <div class="text-center text-white">PHOTO</div>

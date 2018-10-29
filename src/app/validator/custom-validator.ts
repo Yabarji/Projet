@@ -1,7 +1,9 @@
 import {ValidateFn} from 'codelyzer/walkerFactory/walkerFn';
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export class CustomValidator {
+
+
   public static emailValidator(): ValidatorFn {
 
 
@@ -33,7 +35,29 @@ export class CustomValidator {
       }
 
     };
+
+
+
     }
+
+  public static telephoneValidator(): ValidatorFn {
+
+
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value != null || control.value !== '') {
+
+
+        const regexp = new RegExp('^(?:(?:\\+|00)33[\\s.-]{0,3}(?:\\(0\\)[\\s.-]{0,3})?|0)[1-9](?:(?:[\\s.-]?\\d{2}){4}|\\d{2}(?:[\\s.-]?\\d{3}){2})$', 'i' );
+
+
+        return !regexp.test(control.value) ? {'telephone_validator': control.value} : null ;
+      }
+    };
+
+  }
+
+
+
 
 
   }

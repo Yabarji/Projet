@@ -1,9 +1,9 @@
-<div class="modal fade" id="competences" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="interets" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title " id="exampleModalCenterTitle">Competences</h5>
+        <h5 class="modal-title " id="exampleModalCenterTitle">Centres d'interets</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -14,27 +14,14 @@
         <form [formGroup]="form" (submit)="onSubmitData()">
 
 
-          <!-- NOM -->
-          <div class="form-group row">
-            <div class="col-12  ">
-              <div class="rounded ">
-                <label class="col-form-label font form fnav ">Nom:</label>
-                <input type="text" class="form-control" placeholder="ex: Language informatique"
-                       [ngClass]="{'is-invalid': name.invalid && name.touched , 'is-valid': name.valid && verifTag()}"
-                       formControlName="name"/>
-                <p class="invalid-feedback" *ngIf="controlName()">{{controlName()}}</p>
-              </div>
-            </div>
-          </div>
 
-
-          <!-- description -->
+          <!-- interet -->
 
 
           <div class="form-group row">
             <div class="col-12  ">
               <div class="rounded ">
-                <label class="col-form-label font fform  ">Description:</label>
+                <label class="col-form-label font fform  ">Centres d'interets:</label>
 
                 <!-- LISTE COMPETENCE AJOUT -->
                 <div *ngFor="let tag of tags , let i = index" class="  ">
@@ -50,15 +37,15 @@
                 <!--  AJOUT IN LISTE -->
 
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="ex: HTML 5"
-                         [ngClass]="{'is-invalid': description.invalid && description.touched , 'is-valid': description.valid }"
-                         formControlName="description"/>
+                  <input type="text" class="form-control" placeholder="ex: chasse de pokemon sur pokemon go"
+                         [ngClass]="{'is-invalid': name.invalid && name.touched , 'is-valid': name.valid }"
+                         formControlName="name"/>
                   <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2"> <button class="btn btn-outline-secondary"
                                                                               type="button"
                                                                               (click)="addTag()">Ajouter</button></span>
                   </div>
-                  <p class="invalid-feedback" *ngIf="controlDescription()">{{controlDescription()}}</p>
+                  <p class="invalid-feedback" *ngIf="controlName()">{{controlName()}}</p>
                 </div>
               </div>
             </div>

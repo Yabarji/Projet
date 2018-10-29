@@ -1,0 +1,102 @@
+<!-- MODAL BTN -->
+
+<div class="modal fade" id="experiences" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalCenterTitle">Experiences</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+
+        <form [formGroup]="form" (submit)="onSubmitData()" >
+
+
+          <!-- NOM -->
+          <div class="form-group row">
+            <div class="col-12  ">
+              <div class="rounded ">
+                <label class="col-form-label font fform ">Nom:</label>
+                <input type="text" class="form-control" placeholder="ex: Developpeur java EE"
+                       [ngClass]="{'is-invalid': name.invalid && name.touched , 'is-valid': name.valid}"
+                       formControlName="name"/>
+                <p class="invalid-feedback" *ngIf="controlName()">{{controlName()}}</p>
+              </div>
+            </div>
+          </div>
+          <!-- Entreprise -->
+          <div class="form-group row">
+            <div class="col-12  ">
+              <div class="rounded ">
+                <label class="col-form-label font fform ">Entreprise:</label>
+                <input type="text" class="form-control" placeholder="ex: Dawan"
+                       [ngClass]="{'is-invalid': entreprise.invalid && entreprise.touched , 'is-valid': entreprise.valid}"
+                       formControlName="entreprise"/>
+                <p class="invalid-feedback" *ngIf="controlEntreprise()">{{controlEntreprise()}}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- date debut -->
+          <div class="form-group row">
+            <div class="col-12  ">
+              <div class="rounded ">
+                <label class="col-form-label font fform ">Date de debut:</label>
+                <input type="date" class="form-control" placeholder=""
+                       [ngClass]="{'is-invalid': startDate.invalid && startDate.touched , 'is-valid': startDate.valid}"
+                       formControlName="startDate"/>
+                <p class="invalid-feedback" *ngIf="controlDateD()">{{controlDateD()}}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- date FIN -->
+          <div class="form-group row">
+            <div class="col-12  ">
+              <div class="rounded ">
+                <label class="col-form-label font fform ">Date de Fin:</label>
+                <input type="date" class="form-control" placeholder=""
+                       [ngClass]="{'is-invalid': endDate.invalid && endDate.touched , 'is-valid': endDate.valid}"
+                       formControlName="endDate"/>
+                <p class="invalid-feedback" *ngIf="controlDateF()">{{controlDateF()}}</p>
+              </div>
+            </div>
+          </div>
+          <!-- Description -->
+          <div class="form-group row">
+            <div class="col-12  ">
+              <div class="rounded ">
+                <label class="col-form-label font fform ">Description:</label>
+                <input type="text" class="form-control" placeholder="ex: Mission : capture de pokemon albinos"
+                       [ngClass]="{'is-invalid': description.invalid && description.touched , 'is-valid': description.valid}"
+                       formControlName="description"/>
+                <p class="invalid-feedback" *ngIf="controlDescription()">{{controlDescription()}}</p>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Ajout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- MODAL BTN -->
