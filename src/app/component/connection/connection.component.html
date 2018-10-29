@@ -9,7 +9,13 @@
 
       <div class="text-white w-50 mx-auto d-block text-center bform rounded "   style="position:relative;top: 200px; background-image: url(assets/image/fform.jpg)">
 
+        <div class="alert alert-info" *ngIf="message">
+          {{ message }}
+        </div>
 
+        <div class="alert alert-danger" *ngIf="error">
+          {{ error }}
+        </div>
 
         <form [formGroup]="form" (submit)="onSubmitData()" >
 
@@ -48,19 +54,13 @@
           </div>
 
 
-
-
-
-
-
-
           <div class="form-group row ">
 
             <div class="col-8">
-              <input type="submit" name="envoyer" class="btn btn-outline-primary bg-noir rounded" value="Connexion" [disabled]=""/>
+              <input type="submit" name="envoyer" class="btn btn-outline-primary bg-noir rounded" value="Connexion" />
             </div>
 
-            <a ><img class="croi" src="assets/image/croix1.png"  data-dismiss ="modal"></a>
+            <a><img class="croi" src="assets/image/croix1.png"  data-dismiss="modal"></a>
 
           </div>
 
