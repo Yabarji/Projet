@@ -28,8 +28,8 @@ export class ConnectionComponent implements OnInit {
   constructor(private fb: FormBuilder, private authification: AuthenticationService) { }
 
   ngOnInit() {
-    this.email = new FormControl('john.doe@gmail.com', [Validators.required, CustomValidator.emailValidator()]);
-    this.password = new FormControl('password', [Validators.required, Validators.minLength(this.passwordMinLength)]);
+    this.email = new FormControl(null, [Validators.required, CustomValidator.emailValidator()]);
+    this.password = new FormControl(null, [Validators.required, Validators.minLength(this.passwordMinLength)]);
 
     this.form = this.fb.group({
       email: this.email,
