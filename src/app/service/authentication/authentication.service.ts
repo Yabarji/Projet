@@ -1,52 +1,49 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../../class/user';
+import {environment} from '../../../environments/environment';
+import {BehaviorSubject, Observable, of, Subscriber} from 'rxjs';
+import {map} from 'rxjs/internal/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService implements OnInit {
+export class AuthenticationService {
 
-  private static URL = 'http://192.168.10.95:8080/CVinter/api';
-  private static KEY = 'auth';
-  private _state: boolean;
+  private static KEY = 'authentication';
 
-  constructor(private http: HttpClient) { }
+  private authenticationSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public authenticationObservable = this.authenticationSubject.asObservable();
 
-  ngOnInit(): void {
-    const data = localStorage.getItem(AuthenticationService.KEY);
-
-    this._state = null;
-  }
-
-  private authenticate(user: User) {
-    return this.http.post<User>(`${AuthenticationService.URL}/authentication`, user);
+  constructor(private http: HttpClient) {
+    const auth = !!(localStorage.getItem(AuthenticationService.KEY));
+    this.authenticationSubject.next(auth);
   }
 
   public login(user: User) {
-    const observable = this.authenticate(user);
+    if ( environment.production ) {
+      return this.http.post(`${environment.api}/authentication`, user);
+    } else {
+      return this.http.get(`${environment.api}/user.json`).pipe(
+        map( (datas: any[]) => {
+          let user = datas.find( (data) => {
+            if ( data.email === user.email && data.password === user.password ) {
+              localStorage.setItem( AuthenticationService.KEY, JSON.stringify(data) );
+              this.authenticationSubject.next(true);
+              return data;
+            }
+          });
 
-    observable.subscribe( (u: User) => {
-      this.save( JSON.stringify(u) );
-    });
+          return user || {};
+        })
+      );
+    }
 
-    return observable;
-
-    /*this._state = true;
-    this.save('log');*/
   }
 
   public logout() {
-    this._state = false;
-    this.save(null);
-  }
-
-  private save(data: string) {
-    localStorage.setItem(AuthenticationService.KEY, data);
-  }
-
-  get state(): boolean {
-    return this._state;
+    localStorage.removeItem(AuthenticationService.KEY);
+    this.authenticationSubject.next(false);
   }
 
 }

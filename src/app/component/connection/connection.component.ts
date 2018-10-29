@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomValidator} from '../../validator/custom-validator';
 import {AuthenticationService} from '../../service/authentication/authentication.service';
 import {User} from '../../class/user';
@@ -28,15 +28,13 @@ export class ConnectionComponent implements OnInit {
   constructor(private fb: FormBuilder, private authification: AuthenticationService) { }
 
   ngOnInit() {
-
-    this.email = new FormControl(null, [Validators.required, CustomValidator.emailValidator()]);
-    this.password = new FormControl(null, [Validators.required, Validators.minLength(this.passwordMinLength)]);
+    this.email = new FormControl('john.doe@gmail.com', [Validators.required, CustomValidator.emailValidator()]);
+    this.password = new FormControl('password', [Validators.required, Validators.minLength(this.passwordMinLength)]);
 
     this.form = this.fb.group({
       email: this.email,
       password: this.password
     });
-
   }
 
   public onSubmitData() {
@@ -45,10 +43,14 @@ export class ConnectionComponent implements OnInit {
       this.user = new User(this.form.value);
       this.message = 'Authentification en cours';
 
-      this.authification.login(this.user).subscribe( (u: User) => {
-        // console.log(u);
-        this.message = null;
-        $('#connexion').modal('hide');
+      this.authification.login(this.user).subscribe( (data) => {
+        if ( data != null ) {
+          this.message = null;
+          $('#connexion').modal('hide');
+        } else {
+          this.message = null;
+          this.error = 'Erreur d\'identification';
+        }
       }, () => {
         this.message = null;
         this.error = 'Erreur d\'identification';
@@ -76,7 +78,8 @@ export class ConnectionComponent implements OnInit {
       }
 
       if (this.password.hasError('minlength')) {
-        return `mot de passe trop petit... Il doit faire ${this.passwordMinLength} mininmum .. il fait ${this.password.value.length} charactere ` ;
+        return `mot de passe trop petit... Il doit faire ${this.passwordMinLength}
+          mininmum .. il fait ${this.password.value.length} charactere ` ;
       }
     }
     return false;

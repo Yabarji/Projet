@@ -22,6 +22,9 @@ import { InscriptionComponent } from './component/inscription/inscription.compon
 import { ConnectionComponent } from './component/connection/connection.component';
 import { CVComponent } from './component/cv/cv.component';
 import { FlowComponent } from './component/flow/flow.component';
+import {ModalComponent} from './component/modal/modal.component';
+import {ModalCompetencesComponent} from './component/modal-competences/modal-competences.component';
+import {AuthenticationService} from './service/authentication/authentication.service';
 
 
 @NgModule({
@@ -35,7 +38,9 @@ import { FlowComponent } from './component/flow/flow.component';
     InscriptionComponent,
     ConnectionComponent,
     CVComponent,
-    FlowComponent
+    FlowComponent,
+    ModalComponent,
+    ModalCompetencesComponent
   ],
   imports: [
     BrowserModule,

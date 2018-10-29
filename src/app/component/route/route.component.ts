@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from '../../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-route',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouteComponent implements OnInit {
 
-  constructor() { }
+  isAuth: boolean;
+
+  constructor(private authentication: AuthenticationService) { }
 
   ngOnInit() {
+    this.authentication.authenticationObservable.subscribe( (auth: boolean) => {
+      this.isAuth = auth;
+    });
+  }
+
+  public deconnexion() {
+    this.authentication.logout();
   }
 
 }
