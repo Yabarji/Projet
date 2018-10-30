@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Formations} from "../../class/Formations";
+import {CentresInterets} from "../../class/centresInterets";
+import {InteretsService} from "../../service/modal/interets.service";
+import {FormationsService} from "../../service/modal/formations.service";
+
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-modal',
@@ -14,12 +21,13 @@ export class ModalComponent implements OnInit {
   description: FormControl;
   ville: FormControl;
 
-
-
-
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  forma: Formations;
+  error = null;
+  message = null;
+
+  constructor(private fb: FormBuilder  , private FormationS: FormationsService) { }
 
   ngOnInit() {
 
@@ -43,9 +51,27 @@ export class ModalComponent implements OnInit {
   public onSubmitData() {
 
     if (this.form.valid) {
-
-
+      console.log('ENVOIS DANS DAO')
       console.log(this.form.value);
+      if (this.form.valid) {
+
+        this.forma = new Formations(this.form.value);
+        this.message = 'Envois en cours';
+
+        this.FormationS.add(this.forma).subscribe( (data) => {
+          if ( data != null ) {
+            this.message = null;
+            $('#interets').modal('hide');
+          } else {
+            this.message = null;
+            this.error = 'Erreur d\'envois';
+          }
+        }, () => {
+          this.message = null;
+          this.error = 'Erreur d\'envois';
+        });
+
+      }
     }
   }
 

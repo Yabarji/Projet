@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomValidator} from "../../validator/custom-validator";
+import {InformationsService} from "../../service/modal/informations.service";
+import {Informations} from "../../class/informations";
 
+declare var jquery: any;
+declare var $: any;
 @Component({
   selector: 'app-modal-information',
   templateUrl: './modal-information.component.html',
@@ -15,12 +19,14 @@ export class ModalInformationComponent implements OnInit {
   telephone: FormControl;
   datenaiss: FormControl;
 
-
+  info: Informations;
+  error = null;
+  message = null;
 
   form: FormGroup;
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder , private informationS: InformationsService) { }
 
   ngOnInit() {
 
@@ -45,7 +51,27 @@ export class ModalInformationComponent implements OnInit {
 
     if (this.form.valid) {
 
+      console.log('ENVOIS DANS DAO')
       console.log(this.form.value);
+      if (this.form.valid) {
+
+        this.info = new Informations(this.form.value);
+        this.message = 'Envois en cours';
+
+        this.informationS.add(this.info).subscribe( (data) => {
+          if ( data != null ) {
+            this.message = null;
+            $('#informations').modal('hide');
+          } else {
+            this.message = null;
+            this.error = 'Erreur d\'envois';
+          }
+        }, () => {
+          this.message = null;
+          this.error = 'Erreur d\'envois';
+        });
+
+      }
     }
   }
 

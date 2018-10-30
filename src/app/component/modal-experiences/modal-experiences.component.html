@@ -79,8 +79,22 @@
             </div>
           </div>
 
+          <!-- MESSAGE -->
 
+          <div class="alert alert-info" *ngIf="message">
+            {{ message }}
+          </div>
 
+          <div class="alert alert-danger" *ngIf="error">
+            {{ error }}
+          </div>
+
+          <!-- MESSAGE -->
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Ajout</button>
+          </div>
 
 
 

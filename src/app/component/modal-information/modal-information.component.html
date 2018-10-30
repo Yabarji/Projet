@@ -90,14 +90,29 @@
             </div>
           </div>
 
+
+          <!-- MESSAGE -->
+
+          <div class="alert alert-info" *ngIf="message">
+            {{ message }}
+          </div>
+
+          <div class="alert alert-danger" *ngIf="error">
+            {{ error }}
+          </div>
+
+          <!-- MESSAGE -->
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" name="envoyer" value="Ajouter" class="btn btn-primary">
+          </div>
+
         </form>
 
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" name="envoyer" value="Ajouter" class="btn btn-primary">
-      </div>
+
     </div>
   </div>
 </div>

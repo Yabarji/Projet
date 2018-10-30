@@ -6,8 +6,11 @@
 <!-- BLOCK CV  -->
 <!-- BLOCK CV  INFO-->
 <section *ngIf="cv.information">
-  <div class="col">
-    <ul class="col" *ngFor="let info of cv.information">
+
+
+
+  <div class="col ">
+    <ul class="col transclass" *ngFor="let info of cv.information">
       <div>{{info.surname}} {{info.name}}</div>
       <li>né le : {{info.birhday}}</li>
       <li>adresse : {{info.adresse}}</li>
@@ -15,6 +18,9 @@
       <li>email : {{info.email}}</li>
     </ul>
   </div>
+
+
+
 </section>
 
 
@@ -23,7 +29,7 @@
 
 
 <section *ngIf="cv.name">
-  <div class="col align-center">
+  <div class="col align-center transclass">
     <ul class="col" *ngFor="let name of cv.name">
       <div>{{name.name}}</div>
     </ul>
@@ -40,7 +46,7 @@
   <h2 class="text-center">Competences</h2>
   <hr/>
   <div class="row">
-    <ul class="col-3" *ngFor="let competence of cv.competences">
+    <ul class="col-3 transclass" *ngFor="let competence of cv.competences">
       <div class="col">
         <div class="col text-center">{{competence.name }}</div>
         <div *ngFor="let tag of competence.tags">

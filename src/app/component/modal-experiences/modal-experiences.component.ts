@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Experiences} from "../../class/experiences";
+import {CompetencesService} from "../../service/modal/competences.service";
+import {ExperiencesService} from "../../service/modal/experiences.service";
+import {Formations} from "../../class/Formations";
 
+declare var jquery: any;
+declare var $: any;
 @Component({
   selector: 'app-modal-experiences',
   templateUrl: './modal-experiences.component.html',
@@ -16,7 +22,11 @@ export class ModalExperiencesComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  exp: Experiences;
+  error = null;
+  message = null;
+
+  constructor(private fb: FormBuilder, private experienceS: ExperiencesService) { }
 
   ngOnInit() {
 
@@ -38,9 +48,27 @@ export class ModalExperiencesComponent implements OnInit {
   public onSubmitData() {
 
     if (this.form.valid) {
-
-
+      console.log('ENVOIE DANS DAO')
       console.log(this.form.value);
+      if (this.form.valid) {
+
+        this.exp = new Experiences(this.form.value);
+        this.message = 'Envois en cours';
+
+        this.experienceS.add(this.exp).subscribe( (data) => {
+          if ( data != null ) {
+            this.message = null;
+            $('#experiences').modal('hide');
+          } else {
+            this.message = null;
+            this.error = 'Erreur d\'envois';
+          }
+        }, () => {
+          this.message = null;
+          this.error = 'Erreur d\'envois';
+        });
+
+      }
     }
   }
 

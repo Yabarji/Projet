@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {log} from "util";
-import {parse} from "ts-node";
+import {Competences} from "../../class/competences";
+import {CompetencesService} from "../../service/modal/competences.service";
 
+declare var jquery: any;
+declare var $: any;
 @Component({
   selector: 'app-modal-competences',
   templateUrl: './modal-competences.component.html',
@@ -11,6 +13,7 @@ import {parse} from "ts-node";
 export class ModalCompetencesComponent implements OnInit {
 
   tags: Array<string> = [];
+  _tags = [];
 
   tagBool: boolean;
 
@@ -18,7 +21,11 @@ export class ModalCompetencesComponent implements OnInit {
   description: FormControl;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  comp: Competences;
+  error = null;
+  message = null;
+
+  constructor(private fb: FormBuilder, private competenceS: CompetencesService) { }
 
   ngOnInit() {
 
@@ -37,9 +44,42 @@ export class ModalCompetencesComponent implements OnInit {
   public onSubmitData() {
 
     if (this.form.valid) {
+      this.tags.push( this.description.value );
+      this.description.setValue(null);
+
+      this._tags.push(this.name.value);
+      this._tags.push(this.tags);
 
 
+      console.log('ENVOIS DANS DAO')
+      console.log(this._tags);
+      console.log('LISTE DES DESCRIPTION')
+      console.log(this.tags);
+      console.log('FORMULAIRE')
       console.log(this.form.value);
+
+
+
+
+      if (this.form.valid) {
+
+        this.comp = new Competences(this._tags);
+        this.message = 'Envois en cours';
+
+        this.competenceS.add(this.comp).subscribe( (data) => {
+          if ( data != null ) {
+            this.message = null;
+            $('#competences').modal('hide');
+          } else {
+            this.message = null;
+            this.error = 'Erreur d\'envois';
+          }
+        }, () => {
+          this.message = null;
+          this.error = 'Erreur d\'envois';
+        });
+
+      }
     }
   }
 
@@ -66,8 +106,7 @@ export class ModalCompetencesComponent implements OnInit {
   public addTag(): void {
     this.tags.push( this.description.value );
     this.description.setValue(null);
-    this.tagBool= true;
-    console.log(this.tagBool);
+
   }
 
 
@@ -79,8 +118,7 @@ export class ModalCompetencesComponent implements OnInit {
 
   public verifTag(): boolean {
 
-    console.log('je suis entrer et ma valeur est de :');
-    console.log(this.tagBool);
+
     if (this.tagBool) {
       this.tagBool = false;
       return false;
