@@ -20,6 +20,10 @@ export class AuthenticationService {
     this.authenticationSubject.next(auth);
   }
 
+  public isConnected(): boolean {
+    return !!(localStorage.getItem(AuthenticationService.KEY));
+  }
+
   public login(user: User) {
     if ( environment.production ) {
       return this.http.post(`${environment.api}/authentication`, user);
