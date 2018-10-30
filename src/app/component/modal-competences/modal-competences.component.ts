@@ -22,8 +22,8 @@ export class ModalCompetencesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.name = new FormControl(null,[Validators.required]);
-    this.description = new FormControl(null,[Validators.required]);
+    this.name = new FormControl(null, [Validators.required]);
+    this.description = new FormControl(null, [Validators.required]);
 
 
     this.form = this.fb.group({

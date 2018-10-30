@@ -1,6 +1,5 @@
 export class CV {
 
-
   private _formations: any[] ; // ok
 
   private _experiences: any[]; // ok
@@ -18,7 +17,6 @@ export class CV {
     this._interet = interet;
     this._information = information;
   }
-
 
   get name(): any[] {
     return this._name;
