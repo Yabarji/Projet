@@ -1,5 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {CV} from '../../class/cv';
+import * as jsPDF from 'jspdf' ;
+
+
+declare var jquery: any;
+declare var xepOnline: any;
 
 @Component({
   selector: 'app-cv',
@@ -7,6 +12,7 @@ import {CV} from '../../class/cv';
   styleUrls: ['./cv.component.css']
 })
 export class CVComponent implements OnInit {
+  
 
   @Input() cv: object;
 
@@ -16,6 +22,13 @@ export class CVComponent implements OnInit {
 
   public concat(data: any[]) {
     return data.join(', ');
+  }
+
+
+  @ViewChild('content') content: ElementRef
+  public downloadPDF() {
+
+    return xepOnline.Formatter.Format('content',{render:'download'});
   }
 
 }

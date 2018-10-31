@@ -1,5 +1,14 @@
 
-<section class="p-3">
+<section class="p-3" >
+  <!--BUTTON DOWNLOAD-->
+  <div class="align-center ">
+      <button type="button" (click)="downloadPDF()">PDF</button>
+      </div>
+  <!--CONTENEUR PDF-->
+  <div id="content" #content>
+
+  
+
 
   <div *ngIf="cv.user">
     <div>
@@ -15,13 +24,13 @@
     {{ cv.nom }}
   </div>
 
-  <div class="mt-4" *ngIf="cv.competences">
+  <div class="mt-4 " *ngIf="cv.competences">
     <p class="h4">Compétences</p>
     <hr />
 
-    <table class="table">
+    <table class="table ">
       <tbody>
-        <tr *ngFor="let competence of cv.competences">
+        <tr *ngFor="let competence of cv.competences" >
           <td>{{ competence.nom }}</td>
           <td>{{ concat(competence.tags) }}</td>
         </tr>
@@ -67,5 +76,5 @@
       <li *ngFor="let interet of cv.interets"> {{ interet.nom }} </li>
     </ul>
   </div>
-
+</div>
 </section>
