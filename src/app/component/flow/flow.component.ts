@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CV} from '../../class/cv';
+import {UserService} from '../../service/user/user.service';
+import {CvService} from '../../service/cv/cv.service';
 
 @Component({
   selector: 'app-flow',
@@ -8,21 +10,14 @@ import {CV} from '../../class/cv';
 })
 export class FlowComponent implements OnInit {
 
-  cv: CV = new CV();
+  user: any = null;
+  list = [];
 
-  Lcv: any[];
-
-  constructor() { }
+  constructor(private userService: UserService, private cvService: CvService) { }
 
   ngOnInit() {
-  }
-
-
-  public add() {
-
-    this.Lcv.push(this.cv);
-
-
+    this.user = this.userService.getUser();
+    this.list = this.cvService.fake_findAllCvByUserId(this.user.id);
   }
 
 }

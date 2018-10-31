@@ -1,6 +1,23 @@
-<div class="container" >
-<div class="pt-md-5"></div>
-  <div class="pt-md-5"></div>
-  <button class="btn-outline-dark btn" (click)="add()">ajout</button>
+<section class="row">
 
-</div>
+  <header class="col-9 pt-3">
+    <h2> Bonjour {{ user.prenom }} {{ user.nom }}</h2>
+    <hr />
+  </header>
+  <div class="col-3 text-right">
+    <button class="btn btn-outline-primary">Nouveau CV</button>
+  </div>
+
+  <div class="w-100"></div>
+
+  <article class="col">
+    <h3>Mes curriculum vitae</h3>
+
+    <ul class="">
+      <li *ngFor="let cv of list">
+        <a [routerLink]="['/mon-cv', cv.id]"> {{ cv.nom }} </a>
+      </li>
+    </ul>
+
+  </article>
+</section>

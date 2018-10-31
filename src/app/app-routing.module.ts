@@ -13,17 +13,21 @@ import {FlowComponent} from './component/flow/flow.component';
 import {SecureRouteGuard} from './guard/secure-route.guard';
 
 const route: Routes = [
-  { path: 'home', component: AppComponent },
+  { path: '', component: AppComponent },
   {
-    path: 'workspace',
+    path: 'mon-cv/:id',
     component: WorkspaceComponent,
     canActivate: [SecureRouteGuard]
   },
-  { path: 'choix', component: ChoixComponent},
+  { path: 'template', component: ChoixComponent},
   { path: 'nous', component: NousComponent},
   { path: 'inscription', component: InscriptionComponent},
-  { path: 'flow', component: FlowComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  {
+    path: 'mon-espace',
+    component: FlowComponent,
+    canActivate: [SecureRouteGuard]
+  },
+  { path: 'home', redirectTo: '', pathMatch: 'full'},
   { path: '**', component: NotfoundComponent}
 ];
 
