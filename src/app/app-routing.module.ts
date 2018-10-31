@@ -10,15 +10,24 @@ import {ChoixComponent} from './component/choix/choix.component';
 import {NousComponent} from './component/nous/nous.component';
 import {InscriptionComponent} from './component/inscription/inscription.component';
 import {FlowComponent} from './component/flow/flow.component';
+import {SecureRouteGuard} from './guard/secure-route.guard';
 
 const route: Routes = [
-  { path: 'home', component: AppComponent },
-  { path: 'workspace', component: WorkspaceComponent},
-  { path: 'choix', component: ChoixComponent},
+  { path: '', component: AppComponent },
+  {
+    path: 'mon-cv/:id',
+    component: WorkspaceComponent,
+    canActivate: [SecureRouteGuard]
+  },
+  { path: 'template', component: ChoixComponent},
   { path: 'nous', component: NousComponent},
   { path: 'inscription', component: InscriptionComponent},
-  { path: 'flow', component: FlowComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  {
+    path: 'mon-espace',
+    component: FlowComponent,
+    canActivate: [SecureRouteGuard]
+  },
+  { path: 'home', redirectTo: '', pathMatch: 'full'},
   { path: '**', component: NotfoundComponent}
 ];
 

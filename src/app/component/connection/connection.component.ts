@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomValidator} from '../../validator/custom-validator';
 import {AuthenticationService} from '../../service/authentication/authentication.service';
 import {User} from '../../class/user';
+import {Router} from '@angular/router';
 
 declare var jquery: any;
 declare var $: any;
@@ -25,7 +26,7 @@ export class ConnectionComponent implements OnInit {
   error = null;
   message = null;
 
-  constructor(private fb: FormBuilder, private authification: AuthenticationService) { }
+  constructor(private fb: FormBuilder, private authification: AuthenticationService, private router:Router) { }
 
   ngOnInit() {
     this.email = new FormControl(null, [Validators.required, CustomValidator.emailValidator()]);
@@ -47,6 +48,7 @@ export class ConnectionComponent implements OnInit {
         if ( data != null ) {
           this.message = null;
           $('#connexion').modal('hide');
+          this.router.navigateByUrl('/flow');
         } else {
           this.message = null;
           this.error = 'Erreur d\'identification';

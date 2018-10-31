@@ -13,10 +13,11 @@ import {Utilisateur} from '../../class/utilisateur';
 })
 export class InscriptionComponent implements OnInit {
 
+  errors: string[] = [];
+
   email: FormControl;
   password: FormControl;
   confirm: FormControl;
-  term: FormControl;
 
   form: FormGroup;
 
@@ -31,37 +32,30 @@ export class InscriptionComponent implements OnInit {
     this.email = new FormControl(null, [Validators.required, CustomValidator.emailValidator()]);
     this.password = new FormControl(null, [Validators.required, Validators.minLength(this.passwordMinLength)]);
     this.confirm = new FormControl(null, [Validators.required, CustomValidator.confirmPassword(this.password)]);
-    this.term = new FormControl(false, [Validators.requiredTrue]);
 
     this.form = this.fb.group({
       email: this.email,
       password: this.password,
-      confirm: this.confirm,
-      term: this.term
+      confirm: this.confirm
     });
 
   }
 
-
   public onSubmitData() {
-
     if (this.form.valid) {
-
-console.log(this.email.value);
+      console.log(this.email.value);
       console.log(this.password.value);
-
-      console.log(this.form.value);
     }
   }
 
   public controlEmail(): boolean | string {
     if (this.email.touched) {
       if (this.email.hasError('required')) {
-        return 'Email required';
+        return 'Email obligatoire';
       }
 
       if (this.email.hasError('email_validator')) {
-        return 'ta baguette est pas aux normes harry ';
+        return 'Email non valide';
       }
     }
     return false;
@@ -70,11 +64,11 @@ console.log(this.email.value);
   public controlmdp(): boolean | string {
     if (this.password.touched) {
       if (this.password.hasError('required')) {
-        return 'baguette required hermignonne ...' ;
+        return 'Mot de passe obligatoire' ;
       }
 
       if (this.password.hasError('minlength')) {
-        return `ta baguette est trop petite hermionne ... elle doit faire ${this.passwordMinLength} mininmum .. la elle fait ${this.password.value.length} cm  ` ;
+        return `Le mot de passe doit contenir au moins ${this.passwordMinLength} caractère (actuellement ${this.password.value.length} )` ;
       }
     }
     return false;
@@ -83,28 +77,15 @@ console.log(this.email.value);
   public controlcmdp(): boolean | string {
     if (this.confirm.touched) {
       if (this.confirm.hasError('required')) {
-        return 'hermionne ta baguette doit etre confirmer.. ';
+        return 'La confirmation est obligatoire';
       }
 
       if (this.confirm.hasError('confirm_password')) {
-        return 'Password != Confirm';
+        return 'Le mot de passe et la confirmation ne sont pas identique';
       }
     }
     return false;
   }
-
-  public controlterm(): boolean | string {
-    if (this.term.dirty) {
-      if (this.term.hasError('required')) {
-        return 'la chartre de poudlard doit etre signer ...';
-      }
-    }
-    return false;
-  }
-
-
-
-
-  }
+}
 
 

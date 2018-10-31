@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CvService} from '../../service/cv/cv.service';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {UserService} from '../../service/user/user.service';
 
 @Component({
   selector: 'app-workspace',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkspaceComponent implements OnInit {
 
-  constructor() { }
+  cvId: number;
+  cv: object;
+  user: object;
+
+  constructor( private route: ActivatedRoute, private cvService: CvService, private userService: UserService) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      if ( params.has('id')) {
+        this.cvId = +params.get('id');
+
+        this.cv = this.cvService.fake_findCvById(this.cvId);
+      }
+    });
   }
 
 }

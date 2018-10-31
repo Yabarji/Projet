@@ -14,28 +14,34 @@
       </button>
       <div class="menu-logo">
         <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="">
-                         <img src="assets/images/v2-122x122.jpg" alt="" title="" style="height: 3.8rem;">
-                    </a>
-                </span>
+          <span class="navbar-logo">
+            <a routerLink="/home">
+              <img src="assets/images/v2-122x122.jpg" alt="" title="" style="height: 3.8rem;">
+            </a>
+          </span>
           <span class="navbar-caption-wrap">
-            <a class="navbar-caption text-white display-4 font fnav" href="">Hjort Visdom CV</a>
+            <a class="navbar-caption text-white display-4 font fnav" routerLink="/home">Hjort Visdom CV</a>
           </span>
         </div>
       </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-          <li class="nav-item">
-            <a class="nav-link link text-white display-4" href=""  data-toggle="modal" data-target="#inscription">
+          <li class="nav-item" *ngIf="!isAuth">
+            <a class="nav-link link text-white display-4" data-toggle="modal" data-target="#inscription">
               <span class="socicon socicon-strava mbr-iconfont mbr-iconfont-btn"></span>
               Inscription
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link text-white display-4" href="">
+            <a class="nav-link link text-white display-4" routerLink="/template">
               <span class="socicon socicon-alliance mbr-iconfont mbr-iconfont-btn"></span>
-              About Us
+              Nos Templates
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="isAuth">
+            <a class="nav-link link text-white display-4" routerLink="/mon-espace">
+              <span class="socicon socicon-alliance mbr-iconfont mbr-iconfont-btn"></span>
+              Mon espace
             </a>
           </li>
         </ul>

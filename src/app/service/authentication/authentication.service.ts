@@ -1,23 +1,28 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../../class/user';
 import {environment} from '../../../environments/environment';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/internal/operators';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private static KEY = 'authentication';
+  public static KEY = 'authentication';
 
   private authenticationSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public authenticationObservable = this.authenticationSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     const auth = !!(localStorage.getItem(AuthenticationService.KEY));
     this.authenticationSubject.next(auth);
+  }
+
+  public isConnected(): boolean {
+    return !!(localStorage.getItem(AuthenticationService.KEY));
   }
 
   public login(user: User) {
@@ -44,6 +49,7 @@ export class AuthenticationService {
   public logout() {
     localStorage.removeItem(AuthenticationService.KEY);
     this.authenticationSubject.next(false);
+    this.router.navigateByUrl('/home');
   }
 
 }

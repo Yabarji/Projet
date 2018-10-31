@@ -22,7 +22,7 @@
 
               <div class="rounded ">
                 <label class="col-form-label font fform ">Email:</label>
-                <input type="text" class="form-control" placeholder="tu est un Email harry"
+                <input type="text" class="form-control" placeholder="Email"
                        [ngClass]="{'is-invalid': email.invalid && email.touched , 'is-valid': email.valid}"
                        formControlName="email"/>
                 <p class="invalid-feedback" *ngIf="controlEmail()">{{controlEmail()}}</p>
@@ -41,7 +41,7 @@
             <div class="col-12  ">
               <div class="rounded ">
                 <label class="col-form-label font fform">MDP :</label>
-                <input type="password" class="form-control" placeholder="ta baguette est grosse hermionne !"
+                <input type="password" class="form-control" placeholder="Password"
                        [ngClass]="{'is-invalid': password.invalid && password.touched , 'is-valid': password.valid}"
                        formControlName="password"/>
                 <p class="invalid-feedback" *ngIf="controlmdp()">{{controlmdp()}}</p>
@@ -56,7 +56,7 @@
             <div class="col-12 ">
               <div class="rounded ">
                 <label class=" col-form-label font fform">Confirmation MDP :</label>
-                <input type="password" class="form-control" placeholder=" je confirme ta baguette est grosse hermionne !"
+                <input type="password" class="form-control" placeholder="Confirmation"
                        [ngClass]="{'is-invalid': confirm.invalid && confirm.touched , 'is-valid': confirm.valid}"
                        formControlName="confirm"/>
                 <p class="invalid-feedback" *ngIf="controlcmdp()">{{controlcmdp()}}</p>
@@ -65,35 +65,13 @@
 
           </div>
 
-
-
-
-
-          <div class="form-group row  rounded ">
-
-            <div class="col-10 offset-2 ">
-              <div class="form-check ">
-                <input type="checkbox" class="form-check-input" id="CGU"
-                       [ngClass]="{'is-invalid': term.invalid && term.dirty , 'is-valid': term.valid}"
-                       formControlName="term"/>
-                <label class="form-check-label" for="CGU">Condition Générale d'utilisation</label>
-
-                <p class="invalid-feedback" *ngIf="controlterm()">{{controlterm()}}
-
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-
           <div class="form-group row ">
 
             <div class="col-8">
-              <input type="submit" name="envoyer" class="btn btn-outline-primary bg-noir rounded" value="s'inscrire" [disabled]=""/>
+              <input type="submit" class="btn btn-outline-primary bg-noir rounded" value="S'inscrire" [disabled]="form.invalid" />
             </div>
 
-            <a ><img class="croi" src="assets/image/croix1.png"  data-dismiss ="modal"></a>
+            <a ><img class="croi" src="assets/image/croix1.png"  data-dismiss="modal"></a>
 
           </div>
 

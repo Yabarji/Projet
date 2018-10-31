@@ -27,6 +27,7 @@ import { ModalCompetencesComponent } from './component/modal-competences/modal-c
 import { ModalExperiencesComponent } from './component/modal-experiences/modal-experiences.component';
 import { ModalInteretComponent } from './component/modal-interet/modal-interet.component';
 import { ModalInformationComponent } from './component/modal-information/modal-information.component';
+import { UcfirstPipe } from './pipes/ucfirst.pipe';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ModalInformationComponent } from './component/modal-information/modal-i
     ModalCompetencesComponent,
     ModalExperiencesComponent,
     ModalInteretComponent,
-    ModalInformationComponent
+    ModalInformationComponent,
+    UcfirstPipe
   ],
   imports: [
     BrowserModule,
