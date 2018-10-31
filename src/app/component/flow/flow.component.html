@@ -1,6 +1,14 @@
-<div class="container" >
-<div class="pt-md-5"></div>
-  <div class="pt-md-5"></div>
-  <button class="btn-outline-dark btn" (click)="add()">ajout</button>
+
+
+<div *ngFor="let cv of Lcv" class="col">
+
+  <div class="col-10">{{cv.name}}</div><a (click)="deleteCV(cv.name)"><div class="col-2">X</div></a>
 
 </div>
+
+<form class="form-inline" >
+<div class="form-group w-auto">
+  <input type="text" class="form-control " placeholder="Nom">
+</div>
+<button type="submit" class="btn btn-toolbar" (click)="add()">Enregistrer</button>
+</form>

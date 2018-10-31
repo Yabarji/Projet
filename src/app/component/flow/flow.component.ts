@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CV} from '../../class/cv';
+import {from} from "rxjs";
 
 @Component({
   selector: 'app-flow',
@@ -12,15 +13,22 @@ export class FlowComponent implements OnInit {
 
   Lcv: any[];
 
+  name: string;
+
   constructor() { }
 
   ngOnInit() {
   }
 
 
-  public add() {
+  public add(name: string) {
 
-    this.Lcv.push(this.cv);
+    this.Lcv.push(this.name,this.cv);
+
+
+  }
+
+  public deleteCV(name: string  ) {
 
 
   }
