@@ -48,7 +48,7 @@ export class ConnectionComponent implements OnInit {
         if ( data != null ) {
           this.message = null;
           $('#connexion').modal('hide');
-          this.router.navigateByUrl('/flow');
+          this.router.navigateByUrl('/mon-espace');
         } else {
           this.message = null;
           this.error = 'Erreur d\'identification';
